@@ -36,8 +36,7 @@ import { WeatherProvider } from '../providers/weather/weather';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
-    SettingsPage
+    TabsPage
   ],
   providers: [
     StatusBar,
