@@ -46,11 +46,33 @@ export class SettingsPage {
   }
 
   saveForm() {
-    let location = {
-      city: this.city,
-    }
-    this.storage.set('location', JSON.stringify(location));
-    this.navCtrl.push(HomePage);
+    if (this.city == "") {
+        this.geolocation.getCurrentPosition().then((resp) => {
+          // resp.coords.latitude
+          // resp.coords.longitude
+          this.data = resp.coords.latitude + ',' + resp.coords.longitude
+          this.city = this.data
+          console.log("Mensaje1:" + this.data)
+          
+          let location = {
+            city: this.city,
+          }
+          this.storage.set('location', JSON.stringify(location));
+          this.navCtrl.push(HomePage);
+          console.log("Mensaje: " + this.city)
+
+        }).catch((error) => {
+          console.log('Error getting location', error);
+        });
+      }
+      else {
+        let location = {
+          city: this.city,
+        }
+        this.storage.set('location', JSON.stringify(location));
+        this.navCtrl.push(HomePage);
+        console.log("Mensaje: " + this.city)
+      }
   }
 
 }

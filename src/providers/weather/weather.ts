@@ -27,6 +27,7 @@ export class WeatherProvider {
 
   getForecast(city){
     return this.http.get(this.url2+city+'&days=5')
+    .map(res => res.json());
   }
 
 }

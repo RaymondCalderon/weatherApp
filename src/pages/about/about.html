@@ -1,27 +1,95 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Pronosticos
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
+
+
+  <ion-grid *ngIf="weather">
     <ion-row>
-      <ion-col width-100>
+      <ion-col width=50 offset=25>
+        <h2 class="location">Pronosticos dentro de los siguientes 5 dias</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width=100>
         <ion-list>
+            <ion-item>
+                <strong>Fecha Pronostico:</strong> {{weather.forecast.forecastday[0].date}}
+              </ion-item>
+              <ion-item>
+                  <strong>Temperatura:</strong> {{weather.forecast.forecastday[0].day.avgtemp_c}}&deg;
+                </ion-item>
+            <ion-item>
+                <strong>Condicion Clima:</strong> {{weather.forecast.forecastday[0].day.condition.text}}
+              </ion-item>
           <ion-item>
-            <strong>Nombre De la App:</strong> weatherApp
+            <strong>Humedad:</strong> {{weather.forecast.forecastday[0].day.avghumidity}}
           </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item>
+                <strong>Fecha Pronostico:</strong> {{weather.forecast.forecastday[1].date}}
+              </ion-item>
+              <ion-item>
+                  <strong>Temperatura:</strong> {{weather.forecast.forecastday[1].day.avgtemp_c}}&deg;
+                </ion-item>
+            <ion-item>
+                <strong>Condicion Clima:</strong> {{weather.forecast.forecastday[1].day.condition.text}}
+              </ion-item>
           <ion-item>
-            <strong>Version:</strong> 1.2.5
+            <strong>Humedad:</strong> {{weather.forecast.forecastday[1].day.avghumidity}}
           </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item>
+                <strong>Fecha Pronostico:</strong> {{weather.forecast.forecastday[2].date}}
+              </ion-item>
+              <ion-item>
+                  <strong>Temperatura:</strong> {{weather.forecast.forecastday[2].day.avgtemp_c}}&deg;
+                </ion-item>
+            <ion-item>
+                <strong>Condicion Clima:</strong> {{weather.forecast.forecastday[2].day.condition.text}}
+              </ion-item>
           <ion-item>
-            <strong>Descripcion:</strong> App para ver el clima uwu
+            <strong>Humedad:</strong> {{weather.forecast.forecastday[2].day.avghumidity}}
+          </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item>
+                <strong>Fecha Pronostico:</strong> {{weather.forecast.forecastday[3].date}}
+              </ion-item>
+              <ion-item>
+                  <strong>Temperatura:</strong> {{weather.forecast.forecastday[3].day.avgtemp_c}}&deg;
+                </ion-item>
+            <ion-item>
+                <strong>Condicion Clima:</strong> {{weather.forecast.forecastday[3].day.condition.text}}
+              </ion-item>
+          <ion-item>
+            <strong>Humedad:</strong> {{weather.forecast.forecastday[3].day.avghumidity}}
+          </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item>
+                <strong>Fecha Pronostico:</strong> {{weather.forecast.forecastday[4].date}}
+              </ion-item>
+              <ion-item>
+                  <strong>Temperatura:</strong> {{weather.forecast.forecastday[4].day.avgtemp_c}}&deg;
+                </ion-item>
+            <ion-item>
+                <strong>Condicion Clima:</strong> {{weather.forecast.forecastday[4].day.condition.text}}
+              </ion-item>
+          <ion-item>
+            <strong>Humedad:</strong> {{weather.forecast.forecastday[4].day.avghumidity}}
           </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
+
+
