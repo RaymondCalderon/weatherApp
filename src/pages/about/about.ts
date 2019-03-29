@@ -32,6 +32,17 @@ export class AboutPage {
           // resp.coords.latitude
           // resp.coords.longitude
           this.data = resp.coords.latitude + ','+ resp.coords.longitude
+
+          this.location = {
+            city: this.data
+          }
+
+          this.weatherProvider.getForecast(this.location.city).subscribe(weather => {
+            //console.log(weather);
+            this.weather = weather;
+            console.log(weather)
+          });
+
           console.log(this.data);
          }).catch((error) => {
            console.log('Error getting location', error);

@@ -24,6 +24,7 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
+    console.log(":D");
     this.storage.get('location').then((val) => {
       if (val != null) {
         this.location = JSON.parse(val);
@@ -33,6 +34,16 @@ export class HomePage {
           // resp.coords.longitude
           this.data = resp.coords.latitude + ','+ resp.coords.longitude
           console.log(this.data);
+          this.location = {
+            city: this.data
+          }
+
+          this.weatherProvider.getWeather(this.location.city).subscribe(weather => {
+            //console.log(weather);
+            this.weather = weather;
+            console.log(weather);
+          });
+          
          }).catch((error) => {
            console.log('Error getting location', error);
          });
@@ -40,6 +51,7 @@ export class HomePage {
         this.location = {
           city: this.data
         }
+        
       }
 
       this.weatherProvider.getWeather(this.location.city).subscribe(weather => {

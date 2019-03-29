@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { HomePage } from '../home/home';
+//import { HomePage } from '../home/home';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
@@ -36,6 +36,7 @@ export class SettingsPage {
         });
 
         city: this.data
+        
       }
       console.log(this.city);
     });
@@ -58,7 +59,8 @@ export class SettingsPage {
             city: this.city,
           }
           this.storage.set('location', JSON.stringify(location));
-          this.navCtrl.push(HomePage);
+          //this.navCtrl.push("tab.home");
+         
           console.log("Mensaje: " + this.city)
 
         }).catch((error) => {
@@ -70,7 +72,7 @@ export class SettingsPage {
           city: this.city,
         }
         this.storage.set('location', JSON.stringify(location));
-        this.navCtrl.push(HomePage);
+        //this.navCtrl.push(HomePage);
         console.log("Mensaje: " + this.city)
       }
   }
