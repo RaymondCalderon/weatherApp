@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { WeatherProvider } from '../../providers/weather/weather';
+import { WeatherProvider } from '../../providers/weather/weather'
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -13,9 +14,11 @@ export class HomePage {
     city : string;
   }
 
+  data:string = '';
   constructor(
     public navCtrl: NavController,
     private weatherProvider: WeatherProvider,
+    private geolocation:Geolocation,
     private storage: Storage) {
 
   }
@@ -25,8 +28,17 @@ export class HomePage {
       if (val != null) {
         this.location = JSON.parse(val);
       } else {
+        this.geolocation.getCurrentPosition().then((resp) => {
+          // resp.coords.latitude
+          // resp.coords.longitude
+          this.data = resp.coords.latitude + ','+ resp.coords.longitude
+          console.log(this.data);
+         }).catch((error) => {
+           console.log('Error getting location', error);
+         });
+
         this.location = {
-          city: 'Victoria de Durango'
+          city: this.data
         }
       }
 
